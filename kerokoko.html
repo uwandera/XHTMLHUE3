@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutorial de desenvolvimento web</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="tutorial fodelastico sobre desenvovimeto web feito por BLCKKVNT">
+		<meta name="keywords" content="tutorial,development,webdevelopment">
+		<meta name="author" content="BLKKVNT">
+		<meta name="robots" content="noindex,nofollow">
+		<meta http-equiv="refresh" content="15"><!--Refresh document every 30 seconds:-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- para visualizar em qualquer formato de tela -->
+</head>
+<body>
+<h1>Desenvolvimento web hardcoire</h1><!--comenta o codigogo FDP!@$#-->
+<hr width="300"><!--linha hardcoded-->
+
+	<div id="xamp"><p>Como transformar um conhecimento antigo
+	em algo atual <br>
+	 1. O que é o XAMPP, em termos de arquitetura<br>
+	XAMPP é essencialmente um pacote de distribuição integrada composto por quatro pilares:<br>
+	X = Cross‑platform<br>
+	Funciona em Windows, Linux e macOS.<br>
+	A = Apache<br>
+	Servidor web HTTP/S.<br>
+	M = MySQL/MariaDB<br>
+	Sistema de gerenciamento de banco relacional.<br>
+	P = PHP<br>
+	Linguagem de servidor embutida no Apache.<br>
+	P = Perl<br>
+	(hoje menos relevante, mas presente por herança histórica).<br>
+	Ele funciona como um bundle de runtime, não como um ambiente de produção.<br>
+	Seu foco é: desenvolvimento local, com tolerância a permissões fracas, portas livres e processamentos independentes.<br>
+	<br>
+	🧩 2. Arquitetura Interna do XAMPP — Vista de sistema<br>
+	Tecnicamente, o XAMPP roda como um gerenciador de serviços empacotados:<br>
+	XAMPP Control Panel<br>
+	│<br>
+	├── Apache (httpd.exe ou bin/httpd)<br>
+	│   ├── Módulo mod_php<br>
+	│   ├── mod_ssl<br>
+	│   ├── mod_rewrite<br>
+	│   └── libphp.so/libphp.dll<br>
+	│<br>
+	├── MySQL/MariaDB (mysqld)<br>
+	│   ├── Thread Scheduler<br>
+	│   ├── Query Optimizer<br>
+	│   ├── Armazenamento InnoDB<br>
+	│   └── File I/O Manager<br>
+	│
+	├── PHP (php.exe / php-cgi.exe)<br>
+	│   ├── Zend Engine<br>
+	│   ├── Opcode Handler<br>
+	│   └── Extensões (pdo_mysql, curl, openssl)<br>
+	│<br>
+	└── Serviços acessórios<br>
+		├── FileZilla FTP Server<br>
+		├── Mercury Mail<br>
+		└── Tomcat (Java servlet container)<br>
+	<br>
+	O Control Panel age como um process manager, que:<br>
+	<br>
+	Inicia processos nativos<br>
+	Mantém logs em tempo real<br>
+	Exibe portas em uso<br>
+	Injeta variáveis de ambiente<br>
+	Gerencia threads dos serviços<br>
+	<br>
+	Ele não contém uma virtualização — tudo roda nativamente no sistema operacional.<br>
+	<br>
+	🔥 3. Entendendo o Apache dentro do XAMPP<br>
+	O Apache do XAMPP vem pré-configurado com:<br>
+	🔹 Worker model<br>
+	Na versão Windows, usa o módulo mpm_winnt, que cria:<br>
+	<br>
+	1 processo pai<br>
+	N threads por processo para tratar conexões<br>
+	<br>
+	No Linux/macOS, pode usar mpm_prefork ou mpm_worker.<br>
+	🔹 Pipeline de processamento de requisições<br>
+	O fluxo:<br>
+	Cliente → Listener Socket → Accept Thread → Worker Thread<br>
+		   → mod_rewrite → mod_php → PHP Interpreter → Output Buffer → Cliente<br>
+	<br>
+	🔹 mod_php<br>
+	É crucial:<br>
+	o PHP roda embutido no Apache, sem FPM.<br>
+	Isso significa:<br>
+	<br>
+	Sem pool de workers PHP<br>
+	Sem gestão de processos PHP independentes<br>
+	O PHP vive dentro da thread do Apache<br>
+	Cada requisição exige carregamento de extensões PHP via Zend Engine<br>
+	<br>
+	O resultado: simples de usar, não ideal para produção.<br>
+	<br>
+	🐘 4. PHP dentro do XAMPP — como roda de verdade<br>
+	O PHP no XAMPP opera em modo Apache SAPI, carregado via módulo:<br>
+	LoadModule php_module modules/php7apache2_4.dll<br>
+	<br>
+	Internamente:<br>
+	🔹 Zend Engine<br>
+	Interpreta o código PHP, passando por:<br>
+	<br>
+	Lexing<br>
+	Parsing<br>
+	Compilation to OPcodes<br>
+	Execution<br>
+	<br>
+	Por exemplo, um echo "oi" vira algo como:<br>
+	OP_PRINT "oi"<br>
+	OP_RETURN<br>
+	<br>
+	🔹 Extensões<br>
+	O PHP do XAMPP vem com dezenas:<br>
+	<br>
+	pdo_mysql<br>
+	mysqli<br>
+	openssl<br>
+	curl<br>
+	gd<br>
+	mbstring<br>
+	intl<br>
+	<br>
+	Cada extensão é um módulo C carregado dinamicamente.<br>
+	🔹 php.ini<br>
+	O PHP configurado no XAMPP vem com:<br>
+	<br>
+	display_errors = On (debug)<br>
+	error_reporting = E_ALL<br>
+	extension_dir mapeado para /ext/<br>
+	upload_max_filesize e post_max_size ampliados<br>
+	<br>
+	<br>
+	🧬 5. Banco de Dados — MariaDB/MySQL<br>
+	XAMPP utiliza MariaDB, um fork otimizado do MySQL.<br>
+	Arquitetura interna:<br>
+	🔹 Thread-per-connection<br>
+	Cada cliente cria uma thread dedicada.<br>
+	🔹 InnoDB Engine<br>
+	O motor padrão oferece:<br>
+	<br>
+	MVCC (controle de concorrência multiversão)<br>
+	Buffers de página<br>
+	Journaling com redo logs<br>
+	ACID completo<br>
+	<br>
+	🔹 Arquivos internos<br>
+	<br>
+	ibdata1 → tablespaces<br>
+	ib_logfile0/1 → logs de redo<br>
+	mysql/ → metadados do sistema<br>
+	phpmyadmin/ → interface web<br>
+
+	<br>
+	⚙️ 6. Como o XAMPP gerencia portas e processos<br>
+	Apache:<br>
+	<br>
+	Porta 80 / 443<br>
+	Verifica se Skype, IIS ou outro serviço está ocupando<br>
+	<br>
+	MariaDB:<br>
+	<br>
+	Porta 3306<br>
+	<br>
+	FileZilla:<br>
+	<br>
+	Porta 21 + portas passivas<br>
+	<br>
+	Mercury:<br>
+	<br>
+	Portas 25, 110, 143 (SMTP/POP3/IMAP)<br>
+	<br>
+	O XAMPP usa a DLL netstat embutida para detectar conflitos.<br>
+	<br>
+	🛰️ 7. Segurança — por que XAMPP NÃO é para produção<br>
+	Ele vem propositalmente inseguro:<br>
+	<br>
+	Apache com permissões amplas<br>
+	Diretórios com listagem habilitada<br>
+	MariaDB sem senha local<br>
+	Configurações de debug do PHP habilitadas<br>
+	SSL configurado de forma simplificada<br>
+	<br>
+	Motivo: foco total em desenvolvimento local.<br>
+	<br>
+	🧪 Se quiser, posso te entregar algo ainda mais técnico:<br>
+	Posso te explicar:<br>
+	✔ como o Apache do XAMPP gerencia threads<br>
+	✔ como o PHP é carregado na memória em nível binário<br>
+	✔ como o MySQL do XAMPP gerencia locks InnoDB<br>
+	✔ como otimizar o XAMPP para simular produção<br>
+	✔ como substituir mod_php por PHP-FPM<br>
+	✔ como funciona o pipeline TCP dentro dos serviços<br>
+	<br>
+	</p></div>
+</body>
+</html>
