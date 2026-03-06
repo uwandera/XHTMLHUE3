@@ -1,0 +1,136 @@
+Create DATABASE Fatek;
+
+USE Fatek;
+
+-- Tabela PESSOA
+CREATE TABLE pessoa (
+    id_pessoa INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(20),
+    cpf VARCHAR(15),
+    rg VARCHAR(20),
+    endereco VARCHAR(100),
+    bairro VARCHAR(50),
+    cidade VARCHAR(50),
+    uf VARCHAR(2),
+    cep VARCHAR(10),
+    email VARCHAR(30),
+    telefone VARCHAR(15)
+);
+
+-- Tabela CLIENTE (Relacionada com PESSOA)
+CREATE TABLE cliente (
+    idpessoa INT PRIMARY KEY,
+    codigo_cliente VARCHAR(10),
+    FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa)
+);
+
+-- Tabela FUNCIONARIO (Relacionada com PESSOA)
+CREATE TABLE funcionario (
+    idpessoa INT PRIMARY KEY,
+    salario DECIMAL(7,2),
+    acesso VARCHAR(15),
+    login VARCHAR(15),
+    password VARCHAR(25),
+    status VARCHAR(25),
+    FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa)
+);
+
+-- Tabela SUITE
+CREATE TABLE suite (
+    idsuites INT PRIMARY KEY AUTO_INCREMENT,
+    tipoSuites VARCHAR(20),
+    numero VARCHAR(4),
+    piso VARCHAR(2),
+    descricao VARCHAR(255),
+    precoDiario DECIMAL(7,2),
+    status VARCHAR(15)
+);
+
+-- Tabela RESERVA (Relacionada com CLIENTE, SUITE e FUNCIONARIO)
+CREATE TABLE reserva (
+    idreserva INT PRIMARY KEY AUTO_INCREMENT,
+    idcliente INT,
+    idsuites INT,
+    idfuncionario INT,
+    data_reserva DATE,
+    data_entrada DATE,
+    data_saida DATE,
+    custo_hospedagem DECIMAL(7,2),
+    status VARCHAR(15),
+    FOREIGN KEY (idcliente) REFERENCES cliente(idpessoa),
+    FOREIGN KEY (idsuites) REFERENCES suite(idsuites),
+    FOREIGN KEY (idfuncionario) REFERENCES funcionario(idpessoa)
+);
+
+-- Tabela PRODUTO
+CREATE TABLE produto (
+    idproduto INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45),
+    descricao VARCHAR(255),
+    quantidade VARCHAR(20),
+    preco DECIMAL(7,2),
+    status VARCHAR(15)
+);
+
+-- Tabela CONSUMO (Relacionada com RESERVA e PRODUTO)
+CREATE TABLE consumo (
+    idconsumo INT PRIMARY KEY AUTO_INCREMENT,
+    idreserva INT,
+    idproduto INT,
+    quantidade DECIMAL(7,2),
+    preco DECIMAL(7,2),
+    status VARCHAR(15),
+    FOREIGN KEY (idreserva) REFERENCES reserva(idreserva),
+    FOREIGN KEY (idproduto) REFERENCES produto(idproduto)
+);
+
+-- Tabela PAGAMENTO (Relacionada com RESERVA)
+CREATE TABLE pagamento (
+    idpagamento INT PRIMARY KEY AUTO_INCREMENT,
+    idreserva INT,
+    tipo_comprovante VARCHAR(20),
+    num_comprovante VARCHAR(20),
+    total_pagamento DECIMAL(7,2),
+    data_emissao DATE,
+    data_pagamento DATE,
+    FOREIGN KEY (idreserva) REFERENCES reserva(idreserva)
+);
+
+c) Criar uma ROLE chamada fatel_read que conceda acesso apenas de leitura para o banco fatel
+
+CREATE ROLE fatel_read;
+GRANT SELECT ON fatel.* TO fatel_read;
+
+d) Criar um usuário chamado fateluser e atribuir a ele a role fatel_read
+
+CREATE USER 'fateluser'@'%' IDENTIFIED BY 'senha_segura';
+GRANT fatel_read TO 'fateluser'@'%';
+FLUSH PRIVILEGES;
+
+e) Entrar no banco com o usuário fateluser e interagir com o banco fatel
+mysql -u fateluser -p
+
+USE fatel;
+SHOW TABLES;
+
+SELECT nome, email FROM alunos 
+where Nota > 7;
+
+
+tabela verdade
+preposição a -> tem_ping
+Preposição b -> last_update
+
+(((tem_ping > 10 AND last_update < "20260306") OR (active = true))NOT(last_update < "20260304")
+)
+
+
+//fazer calculos no sql pode salvar em thread de processos java
+
+SELECT name, email FROM Employee
+WHERE ((worked_hours > 10 AND hours_bank > 0) OR (holiday = true) NOT id = NULL);
+{SELECT FROM
+DELETE FROM Employee
+WHERE email ="nome_sobrenome@email.com" AND worked_hours < 120;
+
+
