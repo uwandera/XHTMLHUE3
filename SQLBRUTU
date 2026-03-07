@@ -150,4 +150,91 @@ ON DELETE CASCADE é um comando perigoso, usar compo status
 
 UPDATE tabela set <att = value>,<att =value> WHERE att > value OR ...
 
+Table pessoa {
+  id_pessoa int [pk, increment]
+  nome varchar(20)
+  cpf varchar(15)
+  rg varchar(20)
+  endereco varchar(100)
+  bairro varchar(50)
+  cidade varchar(50)
+  uf varchar(2)
+  cep varchar(10)
+  email varchar(30)
+  telefone varchar(15)
+}
+
+Table cliente {
+  idpessoa int [pk]
+  codigo_cliente varchar(10)
+}
+
+Table funcionario {
+  idpessoa int [pk]
+  salario decimal(7,2)
+  acesso varchar(15)
+  login varchar(15)
+  password varchar(25)
+  status varchar(25)
+}
+
+Table suite {
+  idsuites int [pk, increment]
+  tipoSuites varchar(20)
+  numero varchar(4)
+  piso varchar(2)
+  descricao varchar(255)
+  precoDiario decimal(7,2)
+  status varchar(15)
+}
+
+Table reserva {
+  idreserva int [pk, increment]
+  idcliente int
+  idsuites int
+  idfuncionario int
+  data_reserva date
+  data_entrada date
+  data_saida date
+  custo_hospedagem decimal(7,2)
+  status varchar(15)
+}
+
+Table produto {
+  idproduto int [pk, increment]
+  nome varchar(45)
+  descricao varchar(255)
+  quantidade varchar(20)
+  preco decimal(7,2)
+  status varchar(15)
+}
+
+Table consumo {
+  idconsumo int [pk, increment]
+  idreserva int
+  idproduto int
+  quantidade decimal(7,2)
+  preco decimal(7,2)
+  status varchar(15)
+}
+
+Table pagamento {
+  idpagamento int [pk, increment]
+  idreserva int
+  tipo_comprovante varchar(20)
+  num_comprovante varchar(20)
+  total_pagamento decimal(7,2)
+  data_emissao date
+  data_pagamento date
+}
+
+Ref: cliente.idpessoa > pessoa.id_pessoa
+Ref: funcionario.idpessoa > pessoa.id_pessoa
+Ref: reserva.idcliente > cliente.idpessoa
+Ref: reserva.idsuites > suite.idsuites
+Ref: reserva.idfuncionario > funcionario.idpessoa
+Ref: consumo.idreserva > reserva.idreserva
+Ref: consumo.idproduto > produto.idproduto
+Ref: pagamento.idreserva > reserva.idreserva
+
 
