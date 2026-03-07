@@ -129,8 +129,25 @@ Preposição b -> last_update
 
 SELECT name, email FROM Employee
 WHERE ((worked_hours > 10 AND hours_bank > 0) OR (holiday = true) NOT id = NULL);
-{SELECT FROM
-DELETE FROM Employee
+
+{
+    SELECT FROM Employee
+    WHere atributo = "valor" 
+
+    DELETE FROM Employee
 WHERE email ="nome_sobrenome@email.com" AND worked_hours < 120;
+
+ Linguagem de manipulação de dados
+INSERT INTO Employee (nome, email, id) VALUES("nome", "email", "id")
+
+um atributo q é uma chave estrangeira deve estar inscrito dentro da tabela que faz relação
+
+Bomba tar é deletar uma categoria que em cascata exclui as informaçõies nas tabelas que ela está sendo relacionada
+
+<Amazo RDS Aurora>
+
+ON DELETE CASCADE é um comando perigoso, usar compo status 
+
+UPDATE tabela set <att = value>,<att =value> WHERE att > value OR ...
 
 
