@@ -193,6 +193,7 @@
 	✔ como funciona o pipeline TCP dentro dos serviços<br>
 	<br>
 	</p></div>
+	
 	<form name="logar" method="GET">
 		Usuario
 	<input type="text" name="Usuario" size="9" maxlenght="10"><br>
@@ -234,6 +235,46 @@
 </body>
 
 </html>
+
+<form name="logar" method="GET">
+	<div id="UsuSenha">	Usuario
+	<input type="text" name="Usuario" size="9" maxlenght="10"><br>
+	Senha...:
+	<input type="password" name="senha" size="8" maxlenght="8" ><br>	
+		</div>
+	<div id="checkbox">
+	<input type="checkbox" name="newsletter" value="sim" checked >
+	<input type="checkbox" name="nnovidades" value="sim">
+	</div>
+	
+	<div id="contatos">
+		Contato Padrão:<br>
+		celular:<input type="radio" name="contato" value="celular" checked><br>
+		Fixo...:<input type="radio" name="contato" value="fixo"><br>
+		Email...:<input type="radio" name="contato" value="email"><br>
+		Informe..:<input type="text" name="contatopadrão" size="30" maxlength="30"><br>
+		</div>
+		
+		
+	
+	<div id="profissao">
+			profissao..:
+		<select name="profissao" ><br>
+		<option value="" select>Selecione</option>
+		<option value="estudante">Estudante</option>
+		<option value="analista">Analista</option>
+		<option value="Empresario">Empresario</option>
+		</select>
+		
+	</div>
+	
+	
+	<div id="area">
+		Observações...:<br>
+		<textarea name="obs" rows="5" cols="100"></textarea><br>
+		</div>
+		<input type="submit" value="Envia">
+	</form>
 
 
 
