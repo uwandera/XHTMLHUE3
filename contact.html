@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="kerokoko-refactored.css">
+    <title>Contato</title>
+</head>
+<body>
+    <header>
+        <h1>Página de Contato</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Formulário de Contato</h2>
+        <form action="/submit-contact" method="GET">
+            <label>
+                <input type="radio" name="contact-method" value="celular"> Celular
+            </label>
+            <label>
+                <input type="radio" name="contact-method" value="fixo"> Fixo
+            </label>
+            <label>
+                <input type="radio" name="contact-method" value="email"> Email
+            </label>
+            <input type="text" name="contact-info" placeholder="Insira seu contato"><br>
+            <input type="submit" value="Enviar">
+        </form>
+        <h2>Formulário de Profissão</h2>
+        <form action="/submit-profession" method="GET">
+            <label for="profession">Selecione sua profissão:</label>
+            <select name="profession" id="profession">
+                <option value="estudante">Estudante</option>
+                <option value="analista">Analista</option>
+                <option value="empresario">Empresário</option>
+            </select>
+            <input type="submit" value="Enviar">
+        </form>
+        <h2>Observações</h2>
+        <form action="/submit-observations" method="GET">
+            <textarea name="observations" rows="4" cols="50" placeholder="Digite suas observações..."></textarea><br>
+            <input type="submit" value="Enviar">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2026 uwandera. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
