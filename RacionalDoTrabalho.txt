@@ -1,0 +1,138 @@
+Documentação do Projeto Web
+Visão Geral
+Este repositório contém um projeto web desenvolvido com HTML5 e CSS3, com foco em organização estrutural, responsividade e boas práticas de front-end. O projeto é composto por múltiplas páginas estáticas, um arquivo central de estilos e uma estrutura preparada para futura expansão com JavaScript.
+
+1. Como Usar o Projeto (Getting Started)
+1.1 Pré-requisitos
+Para execução local do projeto, é necessário:
+
+Navegador web moderno (Google Chrome, Mozilla Firefox, Microsoft Edge ou Safari)
+Editor de código-fonte (recomenda-se Visual Studio Code)
+Servidor web local (ex.: Live Server, XAMPP, Python ou Node.js)
+
+
+1.2 Instalação e Execução
+
+Clone o repositório:
+
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd seu-repositorio
+
+Inicie um servidor local, utilizando uma das alternativas abaixo:
+
+Opção 1 – Live Server (VS Code)
+Utilize a extensão Live Server e clique com o botão direito em index.html, selecionando Open with Live Server.
+Opção 2 – Python
+python -m http.server 8000
+npx http-server
+
+Acesse a aplicação pelo navegador:
+
+
+http://localhost:8000
+ou http://localhost:5500 (padrão do Live Server)
+
+1.3 Estrutura de Pastas
+projeto-web/
+│
+├── index.html        # Página inicial / login
+├── home.html         # Página com tutorial XAMPP
+├── contact.html      # Página de contato
+├── Estilo.css        # Folha de estilos principal
+├── README.md         # Documentação do projeto
+│
+└── assets/           # Recursos estáticos (opcional)
+    ├── images/
+    ├── fonts/
+    └── icons/
+	
+	
+	
+2. Funcionalidades do Projeto
+
+Layout responsivo compatível com dispositivos móveis, tablets e desktops
+Navegação entre páginas por meio de menu estruturado
+Formulários com múltiplos tipos de entrada
+Interface visual moderna com uso de gradientes, sombras e transições
+Aplicação de boas práticas de acessibilidade (labels, contraste e hierarquia visual)
+Centralização de estilos em CSS externo
+Componentes reutilizáveis baseados em classes CSS
+Estrutura preparada para inclusão futura de interatividade em JavaScript
+
+5. Componentes CSS Disponíveis
+5.1 Botões
+
+<button class="button">Padrão</button>
+<button class="button button-success">Sucesso</button>
+<button class="button button-warning">Aviso</button>
+<button class="button button-danger">Perigo</button>
+<button class="button button-outline">Outline</button>
+
+5.2 Alertas
+<div class="alert alert-success">Mensagem de sucesso</div>
+<div class="alert alert-warning">Mensagem de aviso</div>
+<div class="alert alert-danger">Mensagem de erro</div>
+<div class="alert alert-info">Mensagem informativa</div>
+
+5.3 Badges
+<span class="badge">Novo</span>
+<span class="badge badge-secondary">Destaque</span>
+<span class="badge badge-success">Ativo</span>
+
+5.4 Sombras
+<div class="shadow-sm">Sombra leve</div><div class="shadow-sm">Sombra leve</
+<div class="shadow-md">Sombra média</div>
+
+5.5 Animações
+<div class="animate-pulse">Pulse</div>
+<div class="animate-bounce">Bounce</div>
+<div class="animate-flip">Flip</div>
+
+6. Guia de Estilo (Style Guide)
+6.1 Tipografia
+<h1>Título principal (36px)</h1>
+<h2>Subtítulo (28px)</h2>
+<h3>Seção (22px)</h3>
+<h4>Subseção (18px)</h4>
+
+Tamanhos de fonte
+
+Corpo do texto: 16px
+Labels: 14px
+Texto pequeno: 12px
+Destaque: 18px ou superior
+
+
+6.2 Espaçamentos
+
+XS: 5px
+S: 10px
+M: 15px (padrão)
+L: 20px
+XL: 30px
+XXL: 50px
+
+
+6.3 Bordas Arredondadas
+
+Pequeno: 5px
+Médio: 8px
+/* Leve */
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+/* Média */
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+/* Forte */
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+Grande: 10px
+Circular: 50%
+
+Boas práticas de teste
+
+Utilizar as ferramentas de desenvolvedor do navegador
+Testar em diferentes resoluções e navegadores
+Validar comportamento em dispositivos físicos quando possível
+
+
+6.4 Sombras Padrão
