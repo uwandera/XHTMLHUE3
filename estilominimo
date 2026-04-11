@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+/* layout */
+.container {
+    display: flex;
+}
+
+/* menu lateral */
+aside {
+    width: 200px;
+    background-color: #eee;
+    padding: 10px;
+}
+
+/* links */
+aside a {
+    text-decoration: none;
+    color: black;
+}
+
+aside a:hover {
+    color: blue;
+}
+
+/* conteúdo */
+main {
+    flex: 1;
+    padding: 10px;
+}
+
+/* tabela */
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 5px;
+}
+
+/* topo da tabela */
+.topo {
+    background-color: gray;
+    color: white;
+}
+
+/* formulários */
+input, select {
+    width: 90%;
+    margin: 3px;
+}
