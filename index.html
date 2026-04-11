@@ -3,32 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="kerokoko-refactored.css">
-    <title>Login Page</title>
+    <title>XHTML HUE3</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        #sidebar {
+            width: 200px;
+            background-color: #f1f1f1;
+            padding: 15px;
+            height: 100vh;
+        }
+        #main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: #333;
+            margin: 5px 0;
+        }
+        a:hover {
+            background-color: #ddd;
+        }
+        iframe {
+            width: 100%;
+            height: calc(100vh - 120px);
+            border: none;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to XHTMLHUE3</h1>
+        <h1>XHTML HUE3</h1>
+        <img src="https://via.placeholder.com/150" alt="Image Placeholder" />
     </header>
-    <main>
-        <h2>Login</h2>
-        <form action="#" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <div>
-                <input type="checkbox" id="newsletter" name="newsletter">
-                <label for="newsletter">Subscribe to newsletter</label><br>
-                <input type="checkbox" id="news" name="news">
-                <label for="news">Receive news updates</label>
-            </div>
-            <button type="submit">Login</button>
-            <button type="reset">Reset</button>
-        </form>
-    </main>
+    <div id="sidebar">
+        <a href="login.html">Login</a>
+        <a href="home.html">Home</a>
+        <a href="funcionarios.html">Funcionários</a>
+        <a href="cadastro.html">Cadastro</a>
+    </div>
+    <div id="main">
+        <iframe src="home.html" name="iframe_target"></iframe>
+    </div>
 </body>
 </html>
