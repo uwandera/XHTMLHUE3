@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Cadastro</h2>
+
+<form>
+
+<table border="1">
+
+<tr>
+    <td>Nome</td>
+    <td>Email</td>
+    <td>Senha</td>
+</tr>
+
+<tr>
+    <td><input type="text"></td>
+    <td><input type="email"></td>
+    <td><input type="password"></td>
+</tr>
+
+<tr>
+    <td>Cidade</td>
+    <td>UF</td>
+    <td>Telefone</td>
+</tr>
+
+<tr>
+    <td><input type="text"></td>
+
+    <td>
+        <select>
+            <option>SP</option>
+            <option>RJ</option>
+            <option>MG</option>
+            <option>ES</option>
+            <option>RS</option>
+            <option>SC</option>
+            <option>PR</option>
+            <option>BA</option>
+            <option>PE</option>
+            <option>CE</option>
+            <option>GO</option>
+            <option>DF</option>
+            <option>MT</option>
+            <option>MS</option>
+            <option>AM</option>
+            <option>PA</option>
+            <option>AC</option>
+            <option>RO</option>
+            <option>RR</option>
+            <option>AP</option>
+            <option>TO</option>
+            <option>MA</option>
+            <option>PI</option>
+            <option>RN</option>
+            <option>PB</option>
+            <option>AL</option>
+            <option>SE</option>
+        </select>
+    </td>
+
+    <td><input type="text"></td>
+</tr>
+
+<tr>
+    <td colspan="3">
+        <input type="submit" value="Cadastrar">
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+</body>
+</html>
