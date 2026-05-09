@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Meu Site</title>
+</head>
+<body>
+	<script type ="text/javascript">
+		function verifica_formulario() {
+			for(i = 0; i< cadastro.rede.length; i++) { 
+							
+				if (cadastro.rede[i].checked == true) {
+				alert("rede selecionada: "+cadastro.rede.value);
+				return true;
+				}
+			}
+			alert("Selecione a rede");
+			return false;
+			
+			}
+		</script>
+		
+		<form name = "cadastro" method = ="GET" action= "aula12-31.html" onsubmit = "return verifica_formulario()">
+			Rede Social:<br>
+			<input type ="radio" name = "rede" value = "facebook" > Facebook<br>
+			<input type ="radio" name = "rede" value = "instagram" > Instagram<br>
+			<input type ="radio" name = "rede" value = "tiktok" > Tiktok<br>
+			<input type = "submit" value = "envia" >
+		</form>
+	</body>
+	</html>

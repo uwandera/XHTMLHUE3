@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Projeto XAMPP</title>
+
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS INTERNO -->
+    <style>
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+	<script>
+		function verifica_login() {
+			if (login.usuario.value=="") {
+				alert("Preencher o Usuario");
+				login.usuario.focus();
+				return false;
+				}
+			if (login.senha.value=="") {
+				alert("Preencher o Senha");
+				login.senha.focus();
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
+<!-- TOPO COM IMAGEM -->
+	<header>
+		<img src="ubuntu.jpg" width="47%" height="120">
+		<img src="ubuntu.jpg" width="47%" height="120">
+	</header>
+
+	<div class="container">
+
+		<!-- MENU LATERAL -->
+			<aside>
+
+				<ul>
+					<li><a href="home.html" target="frame">Home</a></li>
+					<li><a href="funcionario.html" target="frame">Funcionários</a></li>
+					<li><a href="cadastro.html" target="frame">Cadastro</a></li>
+				</ul>
+
+				<!-- LOGIN (lado esquerdo, não no meio) -->
+				<h3>Login</h3>
+				<form name="login" method="GET" action="funcionario.html" onsubmit="return verifica_login();">
+
+					<label>Usuário:</label><br>
+					<input type="text" name="usuario"><br>
+
+					<label>Senha:</label><br>
+					<input type="password" name="senha"><br><br>
+
+					<input type="submit" value="Entrar">
+
+				</form>
+
+			</aside>
+
+		<!-- IFRAME -->
+			<main>
+				<iframe name="frame"></iframe>
+			</main>
+
+	</div>
+
+</body>
+</html>
