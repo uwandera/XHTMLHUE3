@@ -1,0 +1,102 @@
+<?php
+/**
+ * Listar Funcionários do Banco de Dados
+ * Conecta ao banco e exibe lista em tabela HTML
+ */
+
+require_once 'config.php';
+
+// Query para buscar funcionários
+$sql = "SELECT id, nome, cargo, email FROM funcionarios ORDER BY nome";
+$result = mysqli_query($con, $sql);
+
+// Verificar se a query foi bem-sucedida
+if (!$result) {
+    die("Erro na consulta: " . mysqli_error($con));
+}
+
+// Contar registros
+$total = mysqli_num_rows($result);
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Funcionários</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #ddd;
+        }
+        
+        .info {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Lista de Funcionários</h2>
+<p class="info">Total de funcionários: <strong><?php echo $total; ?></strong></p>
+
+<?php
+if ($total > 0) {
+    echo "<table>";
+    echo "<tr>";
+    echo "<th>ID</th>";
+    echo "<th>Nome</th>";
+    echo "<th>Cargo</th>";
+    echo "<th>Email</th>";
+    echo "</tr>";
+    
+    // Exibir cada funcionário
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['nome']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['cargo']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+        echo "</tr>";
+    }
+    
+    echo "</table>";
+} else {
+    echo "<p style='color: red;'>Nenhum funcionário encontrado no banco de dados.</p>";
+}
+
+// Fechar conexão
+mysqli_close($con);
+
+?>
+
+</body>
+</html>
